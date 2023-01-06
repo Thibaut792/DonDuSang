@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:DonDuSang.Model"
              x:Class="DonDuSang.View.MainPage">
+    <CollectionView>
 
-
+        <CollectionView.ItemsSource>
+            <x:Array Type="{x:Type model:CentreDeDon}">
+                <model:CentreDeDon
+                    location_city="Paris"
+                    location_name="Emplacement 1"
+                    collection_date="2023-02-04"/>
+                
+                <model:CentreDeDon
+                location_city="Valenciennes"
+                    location_name="Emplacement 2"
+                    collection_date="2023-05-26"/>
+                
+                <model:CentreDeDon
+                    location_city="Lyon"
+                    location_name="Emplacement 3"
+                    collection_date="2023-09-13"/>
+                
+                <model:CentreDeDon
+                    location_city="Lille"
+                    location_name="Emplacement 4"
+                    collection_date="2023-07-21"/>
+            </x:Array>
+        </CollectionView.ItemsSource>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:CentreDeDon">
+                <HorizontalStackLayout>
+                    <Image Source="don_sang.jpg" HeightRequest="100" Margin="2"></Image>
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Label Text="{Binding location_name}" FontSize="20" TextColor="Black" Padding="2"></Label>
+                        <Label Text="{Binding location_city}" FontSize="15" TextColor="Black" Padding="2"></Label>
+                        <Label Text="{Binding collection_date}" FontSize="15" TextColor="Black" Padding="2"></Label>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>
